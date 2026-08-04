@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Меню Ольги Береневой — 42 дня</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card-bg: #ffffff;
+    --primary: #2f7a4f;
+    --primary-dark: #1f5a37;
+    --accent: #e07a3e;
+    --text: #2b2b2b;
+    --muted: #7a7a7a;
+    --border: #e6e2da;
+    --sidebar-w: 220px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--primary-dark);
+    color: #fff;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    padding: 20px 0;
+    z-index: 100;
+  }
+  #sidebar h1 {
+    font-size: 16px;
+    padding: 0 16px 16px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  #search-box {
+    margin: 12px 16px;
+    padding: 8px 10px;
+    width: calc(100% - 32px);
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+  }
+  .nav-link {
+    display: block;
+    padding: 8px 16px;
+    color: #d8e8de;
+    text-decoration: none;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-link:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+  .nav-link.active {
+    background: rgba(255,255,255,0.12);
+    border-left-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  #content {
+    margin-left: var(--sidebar-w);
+    padding: 24px 32px 80px;
+    width: calc(100% - var(--sidebar-w));
+  }
+  #top-header {
+    background: var(--primary);
+    color: #fff;
+    padding: 24px 32px;
+    margin: -24px -32px 32px;
+  }
+  #top-header h1 { margin: 0 0 6px; font-size: 24px; }
+  #top-header p { margin: 0; opacity: 0.9; font-size: 14px; }
+  .day-section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .day-title {
+    font-size: 22px;
+    color: var(--primary-dark);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+  .meals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .meal-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .meal-card h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: var(--primary-dark);
+  }
+  .dish-name {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 6px 0; border-bottom: 1px solid #f0ede8; }
+  .grams { text-align: right; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  #back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+  }
+  @media (max-width: 768px) {
+    #sidebar { display: none; }
+    #content { margin-left: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <h1>🍽 Меню Ольги<br>42 дня</h1>
+  <input type="text" id="search-box" placeholder="Поиск дня...">
+  <div id="nav-links">
+    <a href="#day-1" class="nav-link" data-day="1">День 1</a>
+<a href="#day-2" class="nav-link" data-day="2">День 2</a>
+<a href="#day-3" class="nav-link" data-day="3">День 3</a>
+<a href="#day-4" class="nav-link" data-day="4">День 4</a>
+<a href="#day-5" class="nav-link" data-day="5">День 5</a>
+<a href="#day-6" class="nav-link" data-day="6">День 6</a>
+<a href="#day-7" class="nav-link" data-day="7">День 7</a>
+<a href="#day-8" class="nav-link" data-day="8">День 8</a>
+<a href="#day-9" class="nav-link" data-day="9">День 9</a>
+<a href="#day-10" class="nav-link" data-day="10">День 10</a>
+<a href="#day-11" class="nav-link" data-day="11">День 11</a>
+<a href="#day-12" class="nav-link" data-day="12">День 12</a>
+<a href="#day-13" class="nav-link" data-day="13">День 13</a>
+<a href="#day-14" class="nav-link" data-day="14">День 14</a>
+<a href="#day-15" class="nav-link" data-day="15">День 15</a>
+<a href="#day-16" class="nav-link" data-day="16">День 16</a>
+<a href="#day-17" class="nav-link" data-day="17">День 17</a>
+<a href="#day-18" class="nav-link" data-day="18">День 18</a>
+<a href="#day-19" class="nav-link" data-day="19">День 19</a>
+<a href="#day-20" class="nav-link" data-day="20">День 20</a>
+<a href="#day-21" class="nav-link" data-day="21">День 21</a>
+<a href="#day-22" class="nav-link" data-day="22">День 22</a>
+<a href="#day-23" class="nav-link" data-day="23">День 23</a>
+<a href="#day-24" class="nav-link" data-day="24">День 24</a>
+<a href="#day-25" class="nav-link" data-day="25">День 25</a>
+<a href="#day-26" class="nav-link" data-day="26">День 26</a>
+<a href="#day-27" class="nav-link" data-day="27">День 27</a>
+<a href="#day-28" class="nav-link" data-day="28">День 28</a>
+<a href="#day-29" class="nav-link" data-day="29">День 29</a>
+<a href="#day-30" class="nav-link" data-day="30">День 30</a>
+<a href="#day-31" class="nav-link" data-day="31">День 31</a>
+<a href="#day-32" class="nav-link" data-day="32">День 32</a>
+<a href="#day-33" class="nav-link" data-day="33">День 33</a>
+<a href="#day-33-var-2" class="nav-link" data-day="33 вариант 2">33 вариант 2</a>
+<a href="#day-34" class="nav-link" data-day="34">День 34</a>
+<a href="#day-35" class="nav-link" data-day="35">День 35</a>
+<a href="#day-36" class="nav-link" data-day="36">День 36</a>
+<a href="#day-37" class="nav-link" data-day="37">День 37</a>
+<a href="#day-38" class="nav-link" data-day="38">День 38</a>
+<a href="#day-39" class="nav-link" data-day="39">День 39</a>
+<a href="#day-40" class="nav-link" data-day="40">День 40</a>
+<a href="#day-41" class="nav-link" data-day="41">День 41</a>
+<a href="#day-42" class="nav-link" data-day="42">День 42</a>
+  </div>
+</nav>
+
+<div id="content">
+  <div id="top-header">
+    <h1>Меню Ольги Береневой</h1>
+    <p>Полное меню на 42 дня · Завтрак, обед, ужин и перекус для каждого дня</p>
+  </div>
+
+  
+    <section id="day-1" class="day-section">
+      <h2 class="day-title">День 1</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Хлебцы ржаные</td><td class="grams">22 г</td></tr><tr><td>Сыр творожный альметте</td><td class="grams">17 г</td></tr><tr><td>Яйцо</td><td class="grams">96 г</td></tr><tr><td>Слабосолёная форель/лосось/сёмга</td><td class="grams">35 г</td></tr><tr><td>Овощи (свежие/тушёные/гриль/маринованные)</td><td class="grams">131 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— фунчоза вок</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Свинина эскалоп или говядина стейк</td><td class="grams">114 г</td></tr><tr><td>Пармезан или тёртый сыр 45–50%</td><td class="grams">31 г</td></tr><tr><td>Фунчоза (в сухом виде)</td><td class="grams">39 г</td></tr><tr><td>Оливковое масло</td><td class="grams">4 г</td></tr><tr><td>Красный болгарский перчик</td><td class="grams">52 г</td></tr><tr><td>Стручковая фасоль</td><td class="grams">52 г</td></tr><tr><td>Морковь соломкой</td><td class="grams">44 г</td></tr><tr><td>Кукуруза консервированная</td><td class="grams">35 г</td></tr><tr><td>Семена кунжута</td><td class="grams">3 г</td></tr><tr><td>Чеснок</td><td class="grams">9 г</td></tr><tr><td>Соус терияки</td><td class="grams">17 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5% обычный, не мягкий</td><td class="grams">149 г</td></tr><tr><td>Мягкий творожок 0,1%</td><td class="grams">131 г</td></tr><tr><td>Мёд/варенье/сироп топинамбура</td><td class="grams">13 г</td></tr><tr><td>Мандарин/груша или замена</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-2" class="day-section">
+      <h2 class="day-title">День 2</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— блинчики из банана и яиц</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Банан</td><td class="grams">87 г</td></tr><tr><td>Яйцо (2 шт.)</td><td class="grams">96 г</td></tr><tr><td>Творог 5% обычный</td><td class="grams">61 г</td></tr><tr><td>Мёд/варенье/сироп топинамбура</td><td class="grams">9 г</td></tr><tr><td>Ягоды или замена фруктом</td><td class="grams">175 г</td></tr><tr><td>Масло для жарки</td><td class="grams">4 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/белая рыба/креветки/кальмар/тунец</td><td class="grams">70 г</td></tr><tr><td>Лапша гречневая соба (сухой вес) или гречка</td><td class="grams">61 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Соус терияки</td><td class="grams">17 г</td></tr><tr><td>Бабаевский шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— лепёшка миндальная с начинкой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Тунец в собственном соку или грудка/креветки/кальмар</td><td class="grams">70 г</td></tr><tr><td>Творожный сыр</td><td class="grams">26 г</td></tr><tr><td>Овощи и зелень</td><td class="grams">175 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Сыр тёртый гауда 45%</td><td class="grams">48 г</td></tr><tr><td>Миндальная мука</td><td class="grams">31 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">288 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-3" class="day-section">
+      <h2 class="day-title">День 3</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— шарлотка</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5% обычный</td><td class="grams">70 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Масло сливочное/гхи/кокосовое</td><td class="grams">7 г</td></tr><tr><td>Рисовая мука</td><td class="grams">26 г</td></tr><tr><td>Яблоко</td><td class="grams">175 г</td></tr><tr><td>Мёд/топинамбур/варенье</td><td class="grams">13 г</td></tr><tr><td>Грецкий орех/миндаль/кешью/фундук/семечки</td><td class="grams">9 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— Цезарь</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка птицы/креветки/тунец</td><td class="grams">87 г</td></tr><tr><td>Помидоры</td><td class="grams">175 г</td></tr><tr><td>Салат Айсберг</td><td class="grams">61 г</td></tr><tr><td>Яйцо отварное</td><td class="grams">105 г</td></tr><tr><td>Сухарики/хлебцы</td><td class="grams">17 г</td></tr><tr><td>Пармезан/твёрдый сыр 50%</td><td class="grams">35 г</td></tr><tr><td>Оливковое масло с горчицей</td><td class="grams">5 г</td></tr><tr><td>Горчица</td><td class="grams">9 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Бедро птицы/свинина/телятина/баранина</td><td class="grams">87 г</td></tr><tr><td>Картофель отварной</td><td class="grams">87 г</td></tr><tr><td>Оливки/маслины/авокадо</td><td class="grams">31 г</td></tr><tr><td>Квашеная капуста/зелёные овощи</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">393 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-4" class="day-section">
+      <h2 class="day-title">День 4</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— сырники</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">131 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рисовая/овсяная/пшеничная мука</td><td class="grams">35 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Киви/манго/груша или фрукт</td><td class="grams">87 г</td></tr><tr><td>Мёд/варенье/топинамбур</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— печёночный тортик</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Куриная печень</td><td class="grams">131 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Лук</td><td class="grams">52 г</td></tr><tr><td>Морковь</td><td class="grams">87 г</td></tr><tr><td>Сметана 15%</td><td class="grams">35 г</td></tr><tr><td>Горчица</td><td class="grams">9 г</td></tr><tr><td>Квашеная капуста</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— котлеты</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты творожно-куриные</td><td class="grams">131 г</td></tr><tr><td>Картофель отварной/запечённый</td><td class="grams">122 г</td></tr><tr><td>Оливковое масло</td><td class="grams">9 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Оливки без косточки</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндаль/грецкий/фундук/кешью</td><td class="grams">17 г</td></tr><tr><td>Киви/манго/груша/ягоды</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-5" class="day-section">
+      <h2 class="day-title">День 5</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— овсяноблин</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес (сухой)</td><td class="grams">44 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Кефир 3,2%</td><td class="grams">44 г</td></tr><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Мёд/варенье</td><td class="grams">9 г</td></tr><tr><td>Ягоды или фрукт</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/белая рыба/кальмар/креветки</td><td class="grams">114 г</td></tr><tr><td>Квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Картофель отварной холодный</td><td class="grams">140 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">29 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— гамбургер</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Булочки из миндальной муки</td><td class="grams">79 г</td></tr><tr><td>Котлеты из говядины</td><td class="grams">87 г</td></tr><tr><td>Сыр 45–50%</td><td class="grams">26 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Горчица</td><td class="grams">6 г</td></tr><tr><td>Листья салата/огурец солёный/помидор</td><td class="grams">52 г</td></tr><tr><td>Лук</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яблоко/груша</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-6" class="day-section">
+      <h2 class="day-title">День 6</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— сырники высокобелковые</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">149 г</td></tr><tr><td>Яйцо (2 шт. на порцию)</td><td class="grams">96 г</td></tr><tr><td>Рисовая/овсяная/пшеничная мука</td><td class="grams">35 г</td></tr><tr><td>Ягоды/фрукт</td><td class="grams">87 г</td></tr><tr><td>Мёд/топинамбур</td><td class="grams">9 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— шаурма и суп</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Куриные ножки/бедро/говядина</td><td class="grams">70 г</td></tr><tr><td>Лаваш тонкий армянский</td><td class="grams">79 г</td></tr><tr><td>Сметана 15%</td><td class="grams">35 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">35 г</td></tr><tr><td>Огурец свежий/маринованный</td><td class="grams">52 г</td></tr><tr><td>Корейская морковка</td><td class="grams">31 г</td></tr><tr><td>Суп куриный с лапшой</td><td class="grams">262 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/креветки/тунец</td><td class="grams">87 г</td></tr><tr><td>Оливковое масло</td><td class="grams">6 г</td></tr><tr><td>Овощи/гриль/тушёная капуста</td><td class="grams">157 г</td></tr><tr><td>Оливки</td><td class="grams">26 г</td></tr><tr><td>Хлебцы/зефир/шоколад</td><td class="grams">13 г</td></tr><tr><td>Паштет</td><td class="grams">44 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягодки</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-7" class="day-section">
+      <h2 class="day-title">День 7</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— оладушки</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яйцо</td><td class="grams">105 г</td></tr><tr><td>Плавленый сыр типа «Дружба»</td><td class="grams">57 г</td></tr><tr><td>Творожный сыр типа «Альметте»</td><td class="grams">22 г</td></tr><tr><td>Рыба слабосолёная</td><td class="grams">44 г</td></tr><tr><td>Овощи свежие</td><td class="grams">131 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Пельмени «Бульмени со сливочным маслом»/самокат категория А</td><td class="grams">175 г</td></tr><tr><td>Овощи свежие</td><td class="grams">131 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Пастила/сухофрукты</td><td class="grams">17 г</td></tr><tr><td>Оливки/маслины/авокадо</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Греча готовая</td><td class="grams">87 г</td></tr><tr><td>Треска филе/нежирная белая рыба/грудка</td><td class="grams">131 г</td></tr><tr><td>Морковь по-корейски</td><td class="grams">87 г</td></tr><tr><td>Квашеная капуста/солёные огурцы/помидоры</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог мягкий 5%</td><td class="grams">149 г</td></tr><tr><td>Мёд</td><td class="grams">4 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-8" class="day-section">
+      <h2 class="day-title">День 8</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— тирамису</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндальная мука</td><td class="grams">31 г</td></tr><tr><td>Сливки 33%/маскарпоне</td><td class="grams">35 г</td></tr><tr><td>Мёд</td><td class="grams">10 г</td></tr><tr><td>Масло сливочное 82,5%</td><td class="grams">9 г</td></tr><tr><td>Творожный сыр альметте/крем-чиз</td><td class="grams">22 г</td></tr><tr><td>Творог мягкий 0,1%</td><td class="grams">149 г</td></tr><tr><td>Малина/клубника/голубика или фрукт</td><td class="grams">114 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">105 г</td></tr><tr><td>Булгур приготовленный</td><td class="grams">105 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Бедро птицы/свинина/телятина/баранина</td><td class="grams">79 г</td></tr><tr><td>Спагетти/чечевица/гречневые спагетти, сухие</td><td class="grams">52 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">22 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">350 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-9" class="day-section">
+      <h2 class="day-title">День 9</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— блинчики с творогом</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Вода</td><td class="grams">31 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рисовая/пшеничная мука</td><td class="grams">17 г</td></tr><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Клубника/ягоды</td><td class="grams">175 г</td></tr><tr><td>Мёд</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— котлеты из цветной капусты</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты из цветной капусты</td><td class="grams">219 г</td></tr><tr><td>Квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Картофель отварной/запечённый</td><td class="grams">87 г</td></tr><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">74 г</td></tr><tr><td>Хлебцы/зефир/шоколад</td><td class="grams">22 г</td></tr><tr><td>Помидоры черри/овощи</td><td class="grams">70 г</td></tr><tr><td>Паштет</td><td class="grams">44 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— селёдка под шубой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Ржаной хлеб/хлебцы</td><td class="grams">22 г</td></tr><tr><td>Селёдка</td><td class="grams">61 г</td></tr><tr><td>Горчица</td><td class="grams">6 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Яйцо отварное (2 шт.)</td><td class="grams">105 г</td></tr><tr><td>Картофель отварной</td><td class="grams">52 г</td></tr><tr><td>Морковь отварная/лук</td><td class="grams">70 г</td></tr><tr><td>Свёкла отварная</td><td class="grams">87 г</td></tr><tr><td>Орешки</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-10" class="day-section">
+      <h2 class="day-title">День 10</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— творожные булочки</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">105 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Пшеничная/рисовая мука</td><td class="grams">57 г</td></tr><tr><td>Ванилин</td><td class="grams">5 г</td></tr><tr><td>Слива</td><td class="grams">70 г</td></tr><tr><td>Мёд/варенье/топинамбур</td><td class="grams">10 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Макароны/спагетти отварные</td><td class="grams">87 г</td></tr><tr><td>Куриные ножки/бедро/печень/язык говяжий</td><td class="grams">96 г</td></tr><tr><td>Сыр 45–50%</td><td class="grams">31 г</td></tr><tr><td>Квашеная капуста/соленья</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Тефтели домашние</td><td class="grams">157 г</td></tr><tr><td>Тушёная капуста/овощное рагу</td><td class="grams">262 г</td></tr><tr><td>Масло</td><td class="grams">13 г</td></tr><tr><td>Груша/яблоко</td><td class="grams">114 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндаль/кешью/грецкий орех/фундук</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-11" class="day-section">
+      <h2 class="day-title">День 11</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— каша на молоке и брауни</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес традиционный, сухой</td><td class="grams">35 г</td></tr><tr><td>Молоко 3,2% (можно заменить водой)</td><td class="grams">131 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Мёд</td><td class="grams">11 г</td></tr><tr><td>Щедрые хлебцы</td><td class="grams">13 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Яблочное пюре детское</td><td class="grams">79 г</td></tr><tr><td>Какао без сахара</td><td class="grams">6 г</td></tr><tr><td>Мука пшеничная/овсяная/рисовая/зелёной гречки/сорго</td><td class="grams">22 г</td></tr><tr><td>Шоколад Бабаевский 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— творожно-сырные оладушки</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Филе бедра индейки/куриные окорочка без костей</td><td class="grams">70 г</td></tr><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">22 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Кефир 2,5%</td><td class="grams">48 г</td></tr><tr><td>Рисовая мука</td><td class="grams">22 г</td></tr><tr><td>Сметана для соуса с чесноком и укропом</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— морковно-картофельная лепёшка с тунцом</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Морковь</td><td class="grams">114 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Пармезан тёртый</td><td class="grams">17 г</td></tr><tr><td>Тунец в собственном соку без масла</td><td class="grams">52 г</td></tr><tr><td>Огурец</td><td class="grams">87 г</td></tr><tr><td>Салат айсберг/шпинат/руккола</td><td class="grams">26 г</td></tr><tr><td>Сметана 15% для пропитки</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мандарин/киви/манго</td><td class="grams">140 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-12" class="day-section">
+      <h2 class="day-title">День 12</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— каша на воде с вареньем и пирожное «картошка»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес 15 мин варки/пшено, сухой вес</td><td class="grams">48 г</td></tr><tr><td>Варенье/мёд в кашу</td><td class="grams">9 г</td></tr><tr><td>Миндальная мука</td><td class="grams">26 г</td></tr><tr><td>Творожный сыр крем-чиз/альметте</td><td class="grams">26 г</td></tr><tr><td>Масло сливочное 82,5%</td><td class="grams">9 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr><tr><td>Ягодный сок</td><td class="grams">87 г</td></tr><tr><td>Какао без сахара</td><td class="grams">5 г</td></tr><tr><td>Мёд в «картошку»</td><td class="grams">9 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— творожно-сырные оладушки с укропом</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка куриная/кальмар/креветки/тунец/морепродукты/белая рыба</td><td class="grams">70 г</td></tr><tr><td>Творог 5%</td><td class="grams">79 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Кефир 2,5%</td><td class="grams">48 г</td></tr><tr><td>Рисовая/пшеничная мука</td><td class="grams">22 г</td></tr><tr><td>Сметана для соуса с чесноком и укропом</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— котлетки</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты творожно-куриные</td><td class="grams">157 г</td></tr><tr><td>Рис приготовленный/булгур</td><td class="grams">87 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Банан</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-13" class="day-section">
+      <h2 class="day-title">День 13</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— творожная запеканка</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Запеканка, готовый вес</td><td class="grams">157 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Яйцо</td><td class="grams">96 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">39 г</td></tr><tr><td>Овощи</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Стейк «минутка» мраморной говядины/свинина эскалоп</td><td class="grams">83 г</td></tr><tr><td>Греча отварная</td><td class="grams">114 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Треска/белая рыба/грудка птицы/морепродукты/кальмар/тунец</td><td class="grams">114 г</td></tr><tr><td>Картофель отварной</td><td class="grams">175 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Манго/киви/груша</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-14" class="day-section">
+      <h2 class="day-title">День 14</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— конвертики в лаваше</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">70 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Лаваш тонкий армянский</td><td class="grams">70 г</td></tr><tr><td>Банан</td><td class="grams">52 г</td></tr><tr><td>Мёд цветочный</td><td class="grams">13 г</td></tr><tr><td>Вишня/малина/клубника</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Печень/сердечки/бедро/ножки/красная рыба</td><td class="grams">96 г</td></tr><tr><td>Овощи свежие</td><td class="grams">219 г</td></tr><tr><td>Греча готовая</td><td class="grams">96 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Шоколад Бабаевский 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— яичница шакшука</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яйцо</td><td class="grams">131 г</td></tr><tr><td>Куриная грудка/белая рыба/кальмар</td><td class="grams">57 г</td></tr><tr><td>Помидор/болгарский перец/ягоды</td><td class="grams">219 г</td></tr><tr><td>Красная слабосолёная рыба</td><td class="grams">35 г</td></tr><tr><td>Оливковое масло</td><td class="grams">7 г</td></tr><tr><td>Сыр 45%</td><td class="grams">31 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">350 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-15" class="day-section">
+      <h2 class="day-title">День 15</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— овсяноблин с начинкой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес традиционный, сухой</td><td class="grams">35 г</td></tr><tr><td>Кефир 1%</td><td class="grams">39 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Творожный сыр альметте</td><td class="grams">35 г</td></tr><tr><td>Слабосолёная красная рыба/икра</td><td class="grams">31 г</td></tr><tr><td>Помидор</td><td class="grams">87 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка курицы/индейки/кальмар</td><td class="grams">79 г</td></tr><tr><td>Греча отварная</td><td class="grams">131 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— киш творожно-куриный</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">66 г</td></tr><tr><td>Яичный белок</td><td class="grams">29 г</td></tr><tr><td>Мука пшеничная</td><td class="grams">35 г</td></tr><tr><td>Бедро птицы/свинина/телятина</td><td class="grams">61 г</td></tr><tr><td>Грибы + лук</td><td class="grams">136 г</td></tr><tr><td>Шпинат/петрушка</td><td class="grams">26 г</td></tr><tr><td>Молоко 3,2%</td><td class="grams">44 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">35 г</td></tr><tr><td>Яичный желток</td><td class="grams">15 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Груша/киви/манго</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-16" class="day-section">
+      <h2 class="day-title">День 16</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— ватрушки на творожном тесте</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грецкий орех/фундук/миндаль/кешью/ореховая паста</td><td class="grams">17 г</td></tr><tr><td>Малина/клубника/вишня/земляника</td><td class="grams">61 г</td></tr><tr><td>Творог мягкий 0%</td><td class="grams">70 г</td></tr><tr><td>Мёд цветочный/топинамбур</td><td class="grams">8 г</td></tr><tr><td>Мука пшеничная/рисовая/овсяная</td><td class="grams">31 г</td></tr><tr><td>Яйцо</td><td class="grams">57 г</td></tr><tr><td>Творог 5% обычный</td><td class="grams">140 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— ленивый хачапури и супчик</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Хачапури, готовый вес</td><td class="grams">184 г</td></tr><tr><td>Суп куриный/борщ на бедре/щи/рыбный</td><td class="grams">262 г</td></tr><tr><td>Овощи свежие</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Капуста тушёная/жареная/пюре из цветной капусты</td><td class="grams">306 г</td></tr><tr><td>Масло сливочное</td><td class="grams">11 г</td></tr><tr><td>Куриные ножки/бедро/печень/язык говяжий</td><td class="grams">87 г</td></tr><tr><td>Шоколад 75% Бабаевский</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягодки/арбуз</td><td class="grams">262 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-17" class="day-section">
+      <h2 class="day-title">День 17</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— чиа-пудинг</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Кокосовое молоко</td><td class="grams">79 г</td></tr><tr><td>Семена чиа</td><td class="grams">31 г</td></tr><tr><td>Ягоды/фрукт</td><td class="grams">105 г</td></tr><tr><td>Мёд</td><td class="grams">9 г</td></tr><tr><td>Орешки/ореховая паста</td><td class="grams">13 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">31 г</td></tr><tr><td>Хлебцы ржаные</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— котлеты куриные с грибами</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты из грудки курицы с грибами</td><td class="grams">201 г</td></tr><tr><td>Греча отварная</td><td class="grams">96 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">31 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Треска/белая рыба/грудка птицы/морепродукты</td><td class="grams">96 г</td></tr><tr><td>Картофель отварной</td><td class="grams">105 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Шоколад 75% Бабаевский</td><td class="grams">18 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Виноград/замена</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-18" class="day-section">
+      <h2 class="day-title">День 18</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— рулет или «гоголь-моголь»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яйцо (2 шт.)</td><td class="grams">87 г</td></tr><tr><td>Какао-порошок</td><td class="grams">7 г</td></tr><tr><td>Сахар стевия</td><td class="grams">2 г</td></tr><tr><td>Сливки 33%/маскарпоне</td><td class="grams">52 г</td></tr><tr><td>Творожный сыр крем-чиз/альметте</td><td class="grams">26 г</td></tr><tr><td>Ягоды/фрукт</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Треска/белая рыба/грудка птицы/морепродукты</td><td class="grams">114 г</td></tr><tr><td>Картофель отварной</td><td class="grams">105 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Пастила/зефир/курага/финики/чернослив</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— сливки с сыром</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Креветки/кальмар/треска/грудка птицы</td><td class="grams">96 г</td></tr><tr><td>Спагетти приготовленные</td><td class="grams">131 г</td></tr><tr><td>Сливки 33%/маскарпоне</td><td class="grams">35 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">31 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Апельсин</td><td class="grams">219 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-19" class="day-section">
+      <h2 class="day-title">День 19</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— туноблины с начинкой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Тунец в собственном соку</td><td class="grams">79 г</td></tr><tr><td>Яйцо (2–3 шт.)</td><td class="grams">131 г</td></tr><tr><td>Зелень</td><td class="grams">26 г</td></tr><tr><td>Творожный сыр альметте сливочный</td><td class="grams">35 г</td></tr><tr><td>Овощи</td><td class="grams">140 г</td></tr><tr><td>Авокадо</td><td class="grams">57 г</td></tr><tr><td>Слабосолёная форель/лосось/сёмга/красная икра</td><td class="grams">26 г</td></tr><tr><td>Клубника/ягоды</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— круг</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Фарш из грудки курицы</td><td class="grams">96 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рис белый отварной</td><td class="grams">105 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Чеваппи</td><td class="grams">87 г</td></tr><tr><td>Спагетти/макароны/гречневая соба, приготовленные</td><td class="grams">87 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Овощи свежие</td><td class="grams">219 г</td></tr><tr><td>Пастила/зефир/курага/финики/чернослив</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">262 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-20" class="day-section">
+      <h2 class="day-title">День 20</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— блины</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Блины, готовый вес</td><td class="grams">262 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Овощи/лук</td><td class="grams">26 г</td></tr><tr><td>Яблоко</td><td class="grams">122 г</td></tr><tr><td>Масло сливочное/любое</td><td class="grams">13 г</td></tr><tr><td>Мёд</td><td class="grams">9 г</td></tr><tr><td>Миндальная мука/орешки/семечки</td><td class="grams">13 г</td></tr><tr><td>Цедра лимона</td><td class="grams">2 г</td></tr><tr><td>Лимонный сок</td><td class="grams">9 г</td></tr><tr><td>Корица молотая</td><td class="grams">2 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— шайбу</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Фарш из грудки курицы</td><td class="grams">79 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рис белый отварной</td><td class="grams">87 г</td></tr><tr><td>Сыр 45–50% типа гауда твёрдый</td><td class="grams">31 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— котлетки с творогом</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты творожно-куриные</td><td class="grams">140 г</td></tr><tr><td>Квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Оливки</td><td class="grams">26 г</td></tr><tr><td>Картофель отварной</td><td class="grams">175 г</td></tr><tr><td>Масло сливочное 82,5%/кокосовое</td><td class="grams">15 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">350 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-21" class="day-section">
+      <h2 class="day-title">День 21</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— овсяноблин с солёной начинкой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес традиционный, сухой</td><td class="grams">35 г</td></tr><tr><td>Кефир 1%</td><td class="grams">39 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Творожный сыр «Альметте»</td><td class="grams">26 г</td></tr><tr><td>Слабосолёная красная рыба/икра</td><td class="grams">31 г</td></tr><tr><td>Помидор</td><td class="grams">87 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка курицы/индейки/кальмар</td><td class="grams">122 г</td></tr><tr><td>Греча отварная</td><td class="grams">105 г</td></tr><tr><td>Солёный/маринованный огурец или квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Финики</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— болоньезе</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Фарш говяжий</td><td class="grams">105 г</td></tr><tr><td>Лук</td><td class="grams">70 г</td></tr><tr><td>Томатная паста</td><td class="grams">61 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Спагетти приготовленные</td><td class="grams">118 г</td></tr><tr><td>Овощи свежие</td><td class="grams">131 г</td></tr><tr><td>Сметана 15%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндаль</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-22" class="day-section">
+      <h2 class="day-title">День 22</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— овсяноблин</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес 15 мин варки</td><td class="grams">44 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Кефир 3,2%</td><td class="grams">44 г</td></tr><tr><td>Творог мягкий 5%</td><td class="grams">109 г</td></tr><tr><td>Мёд/варенье</td><td class="grams">13 г</td></tr><tr><td>Ягоды</td><td class="grams">114 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— салат с фасолью</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Куриная грудка приготовленная</td><td class="grams">87 г</td></tr><tr><td>Грибы + лук/баклажаны</td><td class="grams">105 г</td></tr><tr><td>Морковь по-корейски</td><td class="grams">87 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Фасоль консервированная</td><td class="grams">52 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— высокобелковый хачапури</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">105 г</td></tr><tr><td>Мука</td><td class="grams">26 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">44 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Оливковое масло</td><td class="grams">4 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндаль/грецкий/фундук/тыквенные семечки</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-23" class="day-section">
+      <h2 class="day-title">День 23</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— панна-котта</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Желатин сухой</td><td class="grams">9 г</td></tr><tr><td>Творог мягкий 5%</td><td class="grams">109 г</td></tr><tr><td>Творожный сыр/крем-чиз/рикотта</td><td class="grams">44 г</td></tr><tr><td>Ванильный сахар/варенье/мёд/сахар</td><td class="grams">17 г</td></tr><tr><td>Ягоды</td><td class="grams">87 г</td></tr><tr><td>Ржаные хлебцы «Щедрые»</td><td class="grams">22 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Эскалоп свиной</td><td class="grams">105 г</td></tr><tr><td>Сыр моцарелла Galbani</td><td class="grams">39 г</td></tr><tr><td>Кускус/булгур приготовленный</td><td class="grams">96 г</td></tr><tr><td>Оливковое масло</td><td class="grams">7 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Драники</td><td class="grams">175 г</td></tr><tr><td>Томатный сок</td><td class="grams">192 г</td></tr><tr><td>Дорадо/белая рыба/грудка птицы/кальмар/креветки</td><td class="grams">87 г</td></tr><tr><td>Квашеная капуста/ферментированные овощи</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">262 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-24" class="day-section">
+      <h2 class="day-title">День 24</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— конфеты а-ля Рафаэлло и овсяноблин</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творожный сыр альметте/крем-чиз/рикотта</td><td class="grams">31 г</td></tr><tr><td>Масло сливочное 82,5%</td><td class="grams">9 г</td></tr><tr><td>Миндальная мука</td><td class="grams">13 г</td></tr><tr><td>Кокосовая стружка/кокосовая мука</td><td class="grams">10 г</td></tr><tr><td>Какао без сахара</td><td class="grams">3 г</td></tr><tr><td>Геркулес долгой варки</td><td class="grams">39 г</td></tr><tr><td>Яйцо</td><td class="grams">39 г</td></tr><tr><td>Ягоды/фрукт</td><td class="grams">109 г</td></tr><tr><td>Творог мягкий 0,1%</td><td class="grams">70 г</td></tr><tr><td>Мёд</td><td class="grams">7 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— боул с рыбой и киноа</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Горбуша/нежирная рыба/креветки/кальмар/грудка птицы</td><td class="grams">105 г</td></tr><tr><td>Киноа/бурый рис, сухой вес</td><td class="grams">44 г</td></tr><tr><td>Салатные листья</td><td class="grams">52 г</td></tr><tr><td>Авокадо</td><td class="grams">39 г</td></tr><tr><td>Сиртаки 55%/фета</td><td class="grams">26 г</td></tr><tr><td>Помидоры</td><td class="grams">131 г</td></tr><tr><td>Смесь семян</td><td class="grams">3 г</td></tr><tr><td>Соевый соус</td><td class="grams">5 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Горбуша/нежирная рыба/креветки/кальмар/грудка птицы</td><td class="grams">114 г</td></tr><tr><td>Гречка сухая/соба гречневая</td><td class="grams">31 г</td></tr><tr><td>Оливковое масло</td><td class="grams">3 г</td></tr><tr><td>Свёкла + руккола</td><td class="grams">87 г</td></tr><tr><td>Сиртаки 55%/фета</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">262 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-25" class="day-section">
+      <h2 class="day-title">День 25</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— пасхальный</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яйца</td><td class="grams">96 г</td></tr><tr><td>Кулич высокобелковый низкоуглеводный</td><td class="grams">131 г</td></tr><tr><td>Паста творожная</td><td class="grams">74 г</td></tr><tr><td>Мёд/варенье к Пасхе</td><td class="grams">9 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Куриная грудка/белая рыба/морепродукты/креветки/кальмар/тунец</td><td class="grams">79 г</td></tr><tr><td>Спагетти/макароны отварные</td><td class="grams">105 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Сметана 15%</td><td class="grams">17 г</td></tr><tr><td>Свежие овощи</td><td class="grams">131 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Рис готовый отварной</td><td class="grams">87 г</td></tr><tr><td>Треска/телятина/горбуша/дорадо/сибас/грудка птицы/морепродукты</td><td class="grams">79 г</td></tr><tr><td>Свёкла отварная</td><td class="grams">87 г</td></tr><tr><td>Сметана 15%</td><td class="grams">17 г</td></tr><tr><td>Чеснок</td><td class="grams">4 г</td></tr><tr><td>Оливки маринованные</td><td class="grams">22 г</td></tr><tr><td>Пастила/сухофрукты</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яблоко</td><td class="grams">157 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-26" class="day-section">
+      <h2 class="day-title">День 26</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— сырники</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">192 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рисовая/овсяная/пшеничная мука</td><td class="grams">35 г</td></tr><tr><td>Сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Ягоды</td><td class="grams">87 г</td></tr><tr><td>Мёд/варенье/топинамбур</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— пирог «Курник»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Курник, готовый вес</td><td class="grams">262 г</td></tr><tr><td>Овощи</td><td class="grams">131 г</td></tr><tr><td>Зелень</td><td class="grams">48 г</td></tr><tr><td>Сиртаки 55%/фета</td><td class="grams">26 г</td></tr><tr><td>Смесь семян</td><td class="grams">3 г</td></tr><tr><td>Соевый соус</td><td class="grams">5 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— тёплый салат с говядиной</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мраморная говядина/бедро курицы</td><td class="grams">105 г</td></tr><tr><td>Помидор/болгарский перец/огурец/петрушка</td><td class="grams">227 г</td></tr><tr><td>Зелёный горошек консервированный</td><td class="grams">52 г</td></tr><tr><td>Лук</td><td class="grams">26 г</td></tr><tr><td>Оливковое масло</td><td class="grams">5 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/арбуз</td><td class="grams">393 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-27" class="day-section">
+      <h2 class="day-title">День 27</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— пирожное «картошка»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Масло сливочное/кокосовое/гхи/оливковое</td><td class="grams">8 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr><tr><td>Творожный сыр альметте</td><td class="grams">31 г</td></tr><tr><td>Миндальная мука</td><td class="grams">26 г</td></tr><tr><td>Мёд цветочный</td><td class="grams">17 г</td></tr><tr><td>Какао-порошок</td><td class="grams">5 г</td></tr><tr><td>Мандарин/манго/апельсин/киви</td><td class="grams">114 г</td></tr><tr><td>Творог 2%</td><td class="grams">87 г</td></tr><tr><td>Ягодки</td><td class="grams">245 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— тёплый салат с говядиной</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мраморная говядина/бедро курицы</td><td class="grams">79 г</td></tr><tr><td>Помидор</td><td class="grams">175 г</td></tr><tr><td>Болгарский перец</td><td class="grams">87 г</td></tr><tr><td>Огурец</td><td class="grams">87 г</td></tr><tr><td>Зелёный горошек консервированный</td><td class="grams">52 г</td></tr><tr><td>Лук</td><td class="grams">26 г</td></tr><tr><td>Оливковое масло + соевый соус</td><td class="grams">4 г</td></tr><tr><td>Хлебцы «Щедрые»</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка курицы/индейки/белая рыба/кальмар/креветки</td><td class="grams">114 г</td></tr><tr><td>Булгур приготовленный</td><td class="grams">105 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">13 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Протеиновый батончик Bombbar/мягкий творожок</td><td class="grams">44 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-28" class="day-section">
+      <h2 class="day-title">День 28</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— творожные «Бейглы»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5% обычный</td><td class="grams">87 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Пшеничная/рисовая мука</td><td class="grams">52 г</td></tr><tr><td>Авокадо</td><td class="grams">44 г</td></tr><tr><td>Творожный сыр альметте</td><td class="grams">17 г</td></tr><tr><td>Слабосолёная красная рыба/икра</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Оладьи/вафли из кабачка, готовый вес</td><td class="grams">262 г</td></tr><tr><td>Куриная грудка/креветки/кальмар/белая рыба</td><td class="grams">87 г</td></tr><tr><td>Сметана 15%</td><td class="grams">31 г</td></tr><tr><td>Квашеная капуста/соленья</td><td class="grams">87 г</td></tr><tr><td>Зефир/пастила/сухофрукты</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Картофель отварной</td><td class="grams">87 г</td></tr><tr><td>Сливочное масло 82,5%</td><td class="grams">9 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">31 г</td></tr><tr><td>Скумбрия/форель/лосось/сёмга/бедро курицы</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">306 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-29" class="day-section">
+      <h2 class="day-title">День 29</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— булочки из льняной муки</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Льняные булочки</td><td class="grams">48 г</td></tr><tr><td>Творожный сыр альметте</td><td class="grams">17 г</td></tr><tr><td>Слабосолёная красная рыба/икра</td><td class="grams">35 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Овощи</td><td class="grams">131 г</td></tr><tr><td>Зефир/пастила/сухофрукты</td><td class="grams">31 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— бутерброд с булочкой и рыбой</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Слабосолёная красная рыба/икра</td><td class="grams">26 г</td></tr><tr><td>Льняные булочки</td><td class="grams">48 г</td></tr><tr><td>Спагетти/макароны/гречневая соба приготовленные</td><td class="grams">87 г</td></tr><tr><td>Бедро/ножки без кости/печень/утка/лосось/форель</td><td class="grams">61 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">22 г</td></tr><tr><td>Зефир/пастила/сухофрукты</td><td class="grams">31 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Белая рыба/грудка птицы/тунец/креветки</td><td class="grams">105 г</td></tr><tr><td>Картофель приготовленный без масла</td><td class="grams">87 г</td></tr><tr><td>Квашеная капуста/дайкон/тушёные или свежие овощи</td><td class="grams">131 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">280 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-30" class="day-section">
+      <h2 class="day-title">День 30</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— пирожное «Зебра»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Авокадо</td><td class="grams">70 г</td></tr><tr><td>Миндальная мука</td><td class="grams">35 г</td></tr><tr><td>Какао-порошок</td><td class="grams">6 г</td></tr><tr><td>Яйцо сырое</td><td class="grams">52 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr><tr><td>Орешки</td><td class="grams">10 г</td></tr><tr><td>Мягкий творог 0,1%</td><td class="grams">109 г</td></tr><tr><td>Финики/курага/пастила/зефир</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— котлетки курино-творожные</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Котлеты курино-творожные</td><td class="grams">140 г</td></tr><tr><td>Гречка отварная</td><td class="grams">114 г</td></tr><tr><td>Свежие овощи</td><td class="grams">131 г</td></tr><tr><td>Оливки</td><td class="grams">17 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— салат «Мимоза»</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Тунец/кальмар/грудка/белая рыба/креветки</td><td class="grams">96 г</td></tr><tr><td>Яйцо отварное</td><td class="grams">96 г</td></tr><tr><td>Хумус без сахара/сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Горчица</td><td class="grams">3 г</td></tr><tr><td>Лук</td><td class="grams">22 г</td></tr><tr><td>Морковь отварная</td><td class="grams">87 г</td></tr><tr><td>Клубника/ягоды</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Банан</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-31" class="day-section">
+      <h2 class="day-title">День 31</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Слабосоленая кета</td><td class="grams">22 г</td></tr><tr><td>Хлебец</td><td class="grams">10 г</td></tr><tr><td>Пшено/амарант сухой</td><td class="grams">48 г</td></tr><tr><td>Кокосовое молоко</td><td class="grams">74 г</td></tr><tr><td>Масло сливочное/гхи/оливковое</td><td class="grams">6 г</td></tr><tr><td>Груша</td><td class="grams">79 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">166 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Сыр гауда 45–50%</td><td class="grams">44 г</td></tr><tr><td>Мука</td><td class="grams">26 г</td></tr><tr><td>Сыр камамбер/бри</td><td class="grams">35 г</td></tr><tr><td>Миндаль/грецкий</td><td class="grams">6 г</td></tr><tr><td>Груша</td><td class="grams">44 г</td></tr><tr><td>Мёд</td><td class="grams">5 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Белая рыба/грудка/тунец/креветки</td><td class="grams">87 г</td></tr><tr><td>Картофель без масла</td><td class="grams">87 г</td></tr><tr><td>Квашеная капуста/дайкон/овощи</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">280 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-32" class="day-section">
+      <h2 class="day-title">День 32</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Лаваш</td><td class="grams">70 г</td></tr><tr><td>Творог 5%</td><td class="grams">61 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Укроп/чеснок/петрушка</td><td class="grams">17 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Овощи</td><td class="grams">131 г</td></tr><tr><td>Финики/курага</td><td class="grams">31 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/кальмар/креветки</td><td class="grams">105 г</td></tr><tr><td>Айсберг</td><td class="grams">61 г</td></tr><tr><td>Свежие овощи</td><td class="grams">131 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Кукуруза консервированная</td><td class="grams">52 г</td></tr><tr><td>Греческий йогурт 2%</td><td class="grams">44 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мраморная говядина</td><td class="grams">96 г</td></tr><tr><td>Овощи</td><td class="grams">219 г</td></tr><tr><td>Хумус/сметана 15%</td><td class="grams">26 г</td></tr><tr><td>Авокадо</td><td class="grams">52 г</td></tr><tr><td>Семечки/кунжут/лён</td><td class="grams">6 г</td></tr><tr><td>Картофель</td><td class="grams">87 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Шоколад Бабаевский 75%</td><td class="grams">18 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-33" class="day-section">
+      <h2 class="day-title">День 33</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— кокосовые сырники</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Кокосовая мука</td><td class="grams">31 г</td></tr><tr><td>Кокосовое молоко</td><td class="grams">39 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr><tr><td>Ягоды/манго</td><td class="grams">87 г</td></tr><tr><td>Масло для жарки</td><td class="grams">3 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— лазанья</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Лазанья готовая</td><td class="grams">175 г</td></tr><tr><td>Томатный сок</td><td class="grams">219 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Финики/курага</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— жареный творог</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 0,1%</td><td class="grams">175 г</td></tr><tr><td>Яйца</td><td class="grams">96 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Хлебец</td><td class="grams">10 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Батончик Bombbar</td><td class="grams">52 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-33-var-2" class="day-section">
+      <h2 class="day-title">33 вариант 2</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— каша</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес/пшено сухой</td><td class="grams">44 г</td></tr><tr><td>Кокосовое молоко</td><td class="grams">35 г</td></tr><tr><td>Хлебец</td><td class="grams">10 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Мёд/варенье</td><td class="grams">10 г</td></tr><tr><td>Ягоды</td><td class="grams">61 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед <span class="dish-name">— лазанья</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Лазанья готовая</td><td class="grams">175 г</td></tr><tr><td>Томатный сок</td><td class="grams">219 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Финики/курага</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— жареный творог</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 0,1%</td><td class="grams">175 г</td></tr><tr><td>Яйца</td><td class="grams">96 г</td></tr><tr><td>Сыр</td><td class="grams">26 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Хлебец</td><td class="grams">10 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Батончик Bombbar</td><td class="grams">52 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-34" class="day-section">
+      <h2 class="day-title">День 34</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Хлебцы ржаные</td><td class="grams">22 г</td></tr><tr><td>Сыр творожный альметте</td><td class="grams">17 г</td></tr><tr><td>Яйцо</td><td class="grams">96 г</td></tr><tr><td>Слабосолёная рыба</td><td class="grams">35 г</td></tr><tr><td>Овощи</td><td class="grams">131 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Свинина эскалоп/говядина стейк</td><td class="grams">105 г</td></tr><tr><td>Оливковое масло</td><td class="grams">3 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сыр гауда</td><td class="grams">35 г</td></tr><tr><td>Спагетти отварные</td><td class="grams">105 г</td></tr><tr><td>Зефир/пастила/сухофрукты</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Белая рыба/грудка/тунец/креветки/кальмар</td><td class="grams">105 г</td></tr><tr><td>Картофель без масла</td><td class="grams">96 г</td></tr><tr><td>Капуста/соленья/овощи</td><td class="grams">105 г</td></tr><tr><td>Сыр</td><td class="grams">35 г</td></tr><tr><td>Зефир/пастила/сухофрукты</td><td class="grams">39 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-35" class="day-section">
+      <h2 class="day-title">День 35</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— сырники</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">157 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Рисовая/овсяная/пшеничная мука</td><td class="grams">35 г</td></tr><tr><td>Сметана 15%</td><td class="grams">31 г</td></tr><tr><td>Киви/манго/груша</td><td class="grams">87 г</td></tr><tr><td>Мёд/варенье/топинамбур</td><td class="grams">14 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Куриная грудка/креветки/тунец/белая рыба</td><td class="grams">96 г</td></tr><tr><td>Сметана 15%</td><td class="grams">44 г</td></tr><tr><td>Овощи свежие</td><td class="grams">175 г</td></tr><tr><td>Греча отварная</td><td class="grams">105 г</td></tr><tr><td>Орешки</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мраморная говядина</td><td class="grams">96 г</td></tr><tr><td>Картофель без масла</td><td class="grams">96 г</td></tr><tr><td>Капуста/соленья/овощи</td><td class="grams">105 г</td></tr><tr><td>Сыр</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">280 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-36" class="day-section">
+      <h2 class="day-title">День 36</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— запеканка</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Запеканка готовая</td><td class="grams">219 г</td></tr><tr><td>Банан</td><td class="grams">87 г</td></tr><tr><td>Миндаль/фундук/грецкий/кешью</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/белая рыба/креветки/кальмар/тунец</td><td class="grams">105 г</td></tr><tr><td>Соба/гречка готовая</td><td class="grams">105 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">17 г</td></tr><tr><td>Орешки</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Говядина мраморная</td><td class="grams">105 г</td></tr><tr><td>Картофель без масла</td><td class="grams">96 г</td></tr><tr><td>Овощи и зелень</td><td class="grams">175 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Клубника/ягоды</td><td class="grams">280 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-37" class="day-section">
+      <h2 class="day-title">День 37</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— омлет Эвер</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Слабосолёная рыба</td><td class="grams">26 г</td></tr><tr><td>Творожный сыр альметте</td><td class="grams">22 г</td></tr><tr><td>Хлебцы</td><td class="grams">22 г</td></tr><tr><td>Яйцо</td><td class="grams">105 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Бедро/голень/печень/форель</td><td class="grams">105 г</td></tr><tr><td>Картофель</td><td class="grams">105 г</td></tr><tr><td>Капуста/соленья</td><td class="grams">96 г</td></tr><tr><td>Клубника/ягоды</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Эскалоп свиной</td><td class="grams">87 г</td></tr><tr><td>Овощи</td><td class="grams">219 г</td></tr><tr><td>Греча готовая</td><td class="grams">122 г</td></tr><tr><td>Яблоко</td><td class="grams">219 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус <span class="dish-name">— чизкейк</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Чизкейк готовый</td><td class="grams">157 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-38" class="day-section">
+      <h2 class="day-title">День 38</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— бисквит с кремом и чиа</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Банан</td><td class="grams">96 г</td></tr><tr><td>Яйцо</td><td class="grams">48 г</td></tr><tr><td>Какао натуральное</td><td class="grams">9 г</td></tr><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Кокосовое молоко</td><td class="grams">44 г</td></tr><tr><td>Чиа</td><td class="grams">17 г</td></tr><tr><td>Орешки</td><td class="grams">17 г</td></tr><tr><td>Мёд</td><td class="grams">9 г</td></tr><tr><td>Ягоды</td><td class="grams">61 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Печень/форель/бедро/язык</td><td class="grams">105 г</td></tr><tr><td>Соба сухая/гречка сухая</td><td class="grams">44 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Масло</td><td class="grams">6 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">114 г</td></tr><tr><td>Булгур/рис готовый</td><td class="grams">105 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">13 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Ряженка/кефир</td><td class="grams">245 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-39" class="day-section">
+      <h2 class="day-title">День 39</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— миндальная лепёшка</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Миндальная мука</td><td class="grams">31 г</td></tr><tr><td>Яйцо</td><td class="grams">48 г</td></tr><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Клубника/ягоды</td><td class="grams">105 г</td></tr><tr><td>Мёд</td><td class="grams">13 г</td></tr><tr><td>Тыквенные семечки/грецкий орех</td><td class="grams">13 г</td></tr><tr><td>Шоколад 85%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Печень/форель/бедро/язык</td><td class="grams">105 г</td></tr><tr><td>Греча отварная</td><td class="grams">105 г</td></tr><tr><td>Соленья/квашеная капуста</td><td class="grams">87 г</td></tr><tr><td>Яблоко</td><td class="grams">105 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">114 г</td></tr><tr><td>Картофель</td><td class="grams">131 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">13 г</td></tr><tr><td>Пастила/зефир/сухофрукты</td><td class="grams">35 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Ряженка/кефир</td><td class="grams">245 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-40" class="day-section">
+      <h2 class="day-title">День 40</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— шарлотка</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Творог 5%</td><td class="grams">87 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Масло</td><td class="grams">9 г</td></tr><tr><td>Рисовая/овсяная/пшеничная мука</td><td class="grams">26 г</td></tr><tr><td>Яблоко</td><td class="grams">175 г</td></tr><tr><td>Мёд/топинамбур/варенье</td><td class="grams">17 г</td></tr><tr><td>Орехи</td><td class="grams">15 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Пельмени Бульмени, замороженные</td><td class="grams">175 г</td></tr><tr><td>Овощи свежие</td><td class="grams">131 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Оливки/маслины/авокадо</td><td class="grams">26 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">114 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Оливки/маслины/авокадо</td><td class="grams">31 г</td></tr><tr><td>Капуста/зелёные овощи</td><td class="grams">114 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Экспонента</td><td class="grams">219 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-41" class="day-section">
+      <h2 class="day-title">День 41</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— каша на молоке</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес сухой</td><td class="grams">35 г</td></tr><tr><td>Молоко 3,2%</td><td class="grams">114 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Мёд</td><td class="grams">17 г</td></tr><tr><td>Хлебцы</td><td class="grams">13 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Шоколад 75%</td><td class="grams">13 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/индейка/белая рыба/кальмар/креветки</td><td class="grams">96 г</td></tr><tr><td>Сыр гауда 45%</td><td class="grams">26 г</td></tr><tr><td>Макароны отварные</td><td class="grams">105 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мраморная говядина/чеваппи</td><td class="grams">114 г</td></tr><tr><td>Картофель</td><td class="grams">131 г</td></tr><tr><td>Овощи</td><td class="grams">175 г</td></tr><tr><td>Сметана 15%</td><td class="grams">22 г</td></tr><tr><td>Оливки</td><td class="grams">22 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Мягкий творог 0,1%</td><td class="grams">131 г</td></tr><tr><td>Ягоды</td><td class="grams">44 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+
+    <section id="day-42" class="day-section">
+      <h2 class="day-title">День 42</h2>
+      <div class="meals-grid">
+        <div class="meal-card">
+          <h3>🌅 Завтрак <span class="dish-name">— овсяноблин</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Геркулес</td><td class="grams">39 г</td></tr><tr><td>Яйцо</td><td class="grams">52 г</td></tr><tr><td>Ряженка/кефир/айран 3,2–4%</td><td class="grams">44 г</td></tr><tr><td>Творог мягкий 0,1%</td><td class="grams">131 г</td></tr><tr><td>Мёд/варенье</td><td class="grams">9 г</td></tr><tr><td>Ягоды</td><td class="grams">175 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍽️ Обед</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Шашлык свиная вырезка/чеваппи/крылышки</td><td class="grams">192 г</td></tr><tr><td>Картофель</td><td class="grams">87 г</td></tr><tr><td>Овощи</td><td class="grams">219 г</td></tr><tr><td>Томатный сок</td><td class="grams">236 г</td></tr><tr><td>Ягоды</td><td class="grams">219 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🌙 Ужин <span class="dish-name">— окрошка/летний салат</span></h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Грудка/ветчина/белая рыба/кальмар/креветки</td><td class="grams">70 г</td></tr><tr><td>Картофель</td><td class="grams">87 г</td></tr><tr><td>Овощи и зелень</td><td class="grams">175 г</td></tr><tr><td>Сметана 15% + горчица</td><td class="grams">13 г</td></tr><tr><td>Яйца отварные</td><td class="grams">105 г</td></tr></tbody>
+          </table>
+        </div>
+        <div class="meal-card">
+          <h3>🍓 Перекус</h3>
+          <table>
+            <thead><tr><th>Ингредиент</th><th>Граммовка</th></tr></thead>
+            <tbody><tr><td>Ряженка/кефир/айран 3,2–4%</td><td class="grams">245 г</td></tr></tbody>
+          </table>
+        </div></div>
+    </section>
+</div>
+
+<button id="back-to-top" title="Наверх">↑</button>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.day-section');
+
+  const searchBox = document.getElementById('search-box');
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    links.forEach(l => {
+      const day = l.getAttribute('data-day');
+      l.style.display = (q === '' || day.includes(q)) ? 'block' : 'none';
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const link = document.querySelector(`.nav-link[href="#${id}"]`);
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  const backBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+  });
+  backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+
+</body>
+</html>
