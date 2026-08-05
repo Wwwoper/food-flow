@@ -2391,9 +2391,17 @@ function initToggleButtons(scope) {
     if (btn.dataset.bound) return;
     btn.dataset.bound = '1';
     btn.dataset.label = btn.textContent;
+
     btn.addEventListener('click', () => {
-      const table = btn.closest('.table-scroll').querySelector('table');
+      const card = btn.closest('.meal-card');
+      if (!card) return;
+
+      const table = card.querySelector('table');
+      if (!table) return;
+
       const extra = table.querySelector('.extra-rows');
+      if (!extra) return;
+
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       extra.hidden = expanded;
       btn.setAttribute('aria-expanded', String(!expanded));
@@ -2401,7 +2409,6 @@ function initToggleButtons(scope) {
     });
   });
 }
-
 /* ===================== Поиск по дням и блюдам ===================== */
 searchBox.addEventListener('input', () => {
   const q = searchBox.value.trim().toLowerCase();
